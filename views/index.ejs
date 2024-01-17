@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLOUD KITCHEN</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">COMMUNITY KITCHEN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="openAbout()">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <!--     Container  -->
+  <div class="container profile-container">
+    <h5 class="text-center">Welcome to</h5>
+    <h3 class="heading">COMMUNITY KITCHEN</h3>
+    <p class="details">Indulge in a world of culinary delights with us, offering affordable rates without
+         compromising on taste. Enjoy the comfort of safe and homely food. Explore our diverse menu, order with ease. Discover 
+         exclusive deals, crafted by passionate chefs using quality ingredients. Your next extraordinary and budget-friendly, 
+         safe, and homely meal is just a click away.</p>
+ <div class="login">
+        <a href="/user/login">Login</a>
+      </div>
+
+  </div>
+   <!--    ABOUT   -->
+
+   <div id="about" class="about">
+    <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="about-overlay">
+        <h1>About us</h1>
+        <p>Welcome to Community Kitchen , where we redefine the joy of dining with affordable, safe, and homely food experiences.
+          At Community kitchen, we understand hat great food should not only tantalize your taste buds but also fit 
+         seamlessly into your lifestyle. Our commitment to providing food at affordable rates ensures that you can
+          savor your favorite flavors without compromising your budget.Your safety and comfort are our top priorities.
+           Our chefs meticulously craft each dish, using only the freshest and finest ingredients. We take pride in offering
+            more than just a meal we provide a taste of home, a feeling of warmth, and the assurance that every bite is prepared
+             with care.Our vision extends beyond being a food delivery service; we aim to be your trusted culinary companion. Whether
+              you're a busy professional, a family seeking convenience, or someone who simply loves good food, Community Kitchen is 
+              here to make your dining experience both enjoyable and affordable.</p>
+    </div>
+</div>
+
+
+    <!--  FOOTER   -->
+
+    <footer>
+        <p> 2024 Communty kitchen. All rights reserved.</p>
+      </footer>
+
+<!-- Bootstrap JS and Popper.js (optional) -->
+<script>
+function openAbout() {
+document.getElementById("about").style.width = "100%";
+}
+
+function closeNav() {
+document.getElementById("about").style.width = "0%";
+}
+</script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/user/dashboard.css">
+    
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">COMMUNITY KITCHEN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="openAbout()">About</a>
+                </li><li class="nav-item">
+                    <a class="nav-link" href="orders.html">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container product-container" >
+        <div class="row product-row">
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="/images/img.jpg" class="product-image">
+                    <div class="product-info">
+                        <h4>ChickenBiryani</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><strong>Price:</strong> 150</p>
+                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more product cards here -->
+
+        </div>
+    </div>
+     <!--    ABOUT   -->
+
+     <div id="about" class="about">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="about-overlay">
+            <h1>About us</h1>
+            <p>Welcome to Community Kitchen , where we redefine the joy of dining with affordable, safe, and homely food experiences.
+                At Community kitchen, we understand hat great food should not only tantalize your taste buds but also fit 
+               seamlessly into your lifestyle. Our commitment to providing food at affordable rates ensures that you can
+                savor your favorite flavors without compromising your budget.Your safety and comfort are our top priorities.
+                 Our chefs meticulously craft each dish, using only the freshest and finest ingredients. We take pride in offering
+                  more than just a meal we provide a taste of home, a feeling of warmth, and the assurance that every bite is prepared
+                   with care.Our vision extends beyond being a food delivery service; we aim to be your trusted culinary companion. Whether
+                    you're a busy professional, a family seeking convenience, or someone who simply loves good food, Community Kitchen is 
+                    here to make your dining experience both enjoyable and affordable.</p>
+        </div>
+    </div>
+
+
+        <!--  FOOTER   -->
+    
+        <footer>
+            <p> 2024 Communty kitchen. All rights reserved.</p>
+          </footer>
+    
+
+    <!-- Rest of the content goes here -->
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script>
+        function openAbout() {
+       document.getElementById("about").style.width = "100%";
+   }
+
+   function closeNav() {
+       document.getElementById("about").style.width = "0%";
+   }
+   </script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
