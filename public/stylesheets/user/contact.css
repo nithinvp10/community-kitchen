@@ -1,0 +1,147 @@
+body {
+    background-color: #FFE5B4;
+}
+
+/* navbar */
+
+.navbar {
+    background-color:#f5efdd !important;
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    color: #5b6bfa !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+    color: #5b6bfa !important;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color:orangered;
+    color: #fff !important;
+    border-radius: 10px;
+}
+
+
+/* contact DETAILS */
+.contact-info {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 80px;
+}
+.contact-info h2 {
+    color: #007bff;
+}
+.contact-info p {
+    color: #555;
+    font-size: 16px;
+}
+.contact-info h5 {
+    color: #007bff;
+    margin-top: 20px;
+}
+.contact-info .social-links a {
+    font-size: 36px;
+    color: #007bff;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+.contact-info .social-links a:hover {
+    color: #0056b3;
+}
+
+/* about */
+
+.about{
+height: 100%;
+width: 0;
+position:fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0, 0.9);
+overflow-x: hidden;
+transition: 0.5s;
+}
+.about a{
+padding: 60px;
+text-align: right;
+text-decoration: none;
+font-size: 36px;
+color: red;
+display: block;
+transition: 0.3s;
+}
+.about a:hover, .about a:focus{
+color:#f1f1f1;
+
+}
+.about .closebtn{
+position:abosolute;
+top:20px;
+right:45px;
+font-size: 60px;
+
+}
+.about a .closebtn{
+color:white;
+}
+
+.about-overlay h1{
+text-align: center;
+color: white;
+font-size: 45px;
+
+}
+.about-overlay p{
+text-align: center;
+font-size: 18px;
+color:white;
+
+}
+
+@media screen and (max-width: 768px) {
+/* Responsive styles for smaller screens */
+
+
+.about a {
+padding: 20px;
+font-size: 24px;
+}
+
+.about-overlay h1 {
+font-size: 30px;
+}
+
+.about-overlay p {
+font-size: 16px;
+}
+
+}
+
+ /* footer  */
+ footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    bottom: 0;
+    position:fixed;
+}

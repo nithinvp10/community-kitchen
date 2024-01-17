@@ -99,8 +99,49 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.get("/:id/dashboard", (req, res) => {
-  res.render("user/dashboard");
+router.get("/:id/dashboard", async (req, res) => {
+  const { id } = req.params;
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    if (findId) {
+      res.render("user/dashboard", { id: id });
+    } else {
+      res.clearCookie("user");
+      res.redirect("/user/login");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
+router.get("/:id/dashboard/contact", async (req, res) => {
+  const { id } = req.params;
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    if (findId) {
+      res.render("user/contact", { id: id });
+    } else {
+      res.clearCookie("user");
+      res.redirect("/user/login");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
+router.get("/:id/dashboard/profile", async (req, res) => {
+  const { id } = req.params;
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    if (findId) {
+      res.render("user/profile", { profile: findId.dataValues });
+    } else {
+      res.redirect("/user/login");
+    }
+  } else {
+    res.clearCookie("user");
+    res.redirect("/user/login");
+  }
 });
 
 router.get("/logout", (req, res) => {

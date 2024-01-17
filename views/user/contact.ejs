@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/user/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Communty kitchen</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/user/<%= id %>/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openAbout()">About</a>
+                    </li><li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/<%= id %>/dashboard/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/<%= id %>/dashboard/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- CONTACT DETAILS-->
+    <div class="container">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>
+                Thank you for your interest in contacting us. If you have any questions or inquiries, feel free to reach out to us using the following contact methods.
+            </p>
+    
+            <h5>Email:</h5>
+            <p>info@example.com</p>
+    
+            <h5>Phone:</h5>
+            <p>+123 456 7890</p>
+    
+            <div class="social-links mt-4">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    
+     <!--    ABOUT   -->
+
+     <div id="about" class="about">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="about-overlay">
+            <h1>About us</h1>
+            <p>Welcome to Community Kitchen , where we redefine the joy of dining with affordable, safe, and homely food experiences.
+                At Community kitchen, we understand hat great food should not only tantalize your taste buds but also fit 
+               seamlessly into your lifestyle. Our commitment to providing food at affordable rates ensures that you can
+                savor your favorite flavors without compromising your budget.Your safety and comfort are our top priorities.
+                 Our chefs meticulously craft each dish, using only the freshest and finest ingredients. We take pride in offering
+                  more than just a meal we provide a taste of home, a feeling of warmth, and the assurance that every bite is prepared
+                   with care.Our vision extends beyond being a food delivery service; we aim to be your trusted culinary companion. Whether
+                    you're a busy professional, a family seeking convenience, or someone who simply loves good food, Community Kitchen is 
+                    here to make your dining experience both enjoyable and affordable.</p>
+        </div>
+    </div>
+
+
+        <!--  FOOTER   -->
+    
+        <footer>
+            <p> 2024 Communty kitchen. All rights reserved.</p>
+          </footer>
+    
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script>
+        function openAbout() {
+       document.getElementById("about").style.width = "100%";
+   }
+
+   function closeNav() {
+       document.getElementById("about").style.width = "0%";
+   }
+   </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
