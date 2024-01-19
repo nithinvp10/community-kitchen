@@ -13,37 +13,7 @@
 <body>
 
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">COMMUNITY KITCHEN</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/user/<%= id %>/dashboard">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="openAbout()">About</a>
-                </li><li class="nav-item">
-                    <a class="nav-link" href="orders.html">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/<%= id %>/dashboard/contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/<%= id %>/dashboard/profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<%- include('components/nav') %>
     <div class="container product-container" >
         <div class="row product-row">
             <div class="col-md-4">
@@ -53,7 +23,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +34,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +45,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -86,7 +56,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +67,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -108,7 +78,7 @@
                         <h4>ChickenBiryani</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="product.html">Order</a>
+                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
                     </div>
                 </div>
             </div>
@@ -137,9 +107,7 @@
 
         <!--  FOOTER   -->
     
-        <footer>
-            <p> 2024 Communty kitchen. All rights reserved.</p>
-          </footer>
+        <%- include('components/footer') %>
     
 
     <!-- Rest of the content goes here -->

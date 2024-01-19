@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/user/product.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <%- include('components/nav') %>
+<!--  product   -->
+    <div class="container product-container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/images/img.jpg" alt="Food Image">
+            </div>
+            <div class="col-md-6 product-info">
+                <h2>Chicken-Biryani</h2>
+                <p>Chicken Biryani, a culinary masterpiece that harmonizes aromatic spices, succulent chicken, 
+                      and fragrant basmati rice. Slow-cooked to 
+                      perfection, each bite unfolds layers of warmth from cumin, cardamom, and a hint of cinnamon.
+                     Tender marinated chicken, fluffy saffron-infused rice, and
+                     caramelized onions on top create a taste sensation that's both authentic and unforgettable.
+                     Treat yourself to the essence of Indian cuisine</p>
+                <p><strong>Ingredients:</strong>Chicken , Basmati Rice ,Yogurt, Onions ,Tomatoes, 
+                    Spices (cumin, cardamom, cinnamon, cloves, bay leaves), Ghee or Cooking Oil, Ginger,Garlic
+                    Green Chilies, Fresh Coriander, Mint,Saffron , Lime or Lemon Juice</p>
+                <p><strong>Price:</strong> 150</p>
+                
+                <!-- Quantity Input -->
+                <form action="pay.html">
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control" id="quantity" value="1" min="1">
+                </div>
+
+                <!-- Order Button -->
+                <a href="/user/<%= id %>/dashboard/product/<%= product %>/pay" class="btn btn-primary btn-block">Order Now</a>
+                </form>
+            </div>
+        </div>
+    </div>
+         <!--    ABOUT   -->
+
+         <div id="about" class="about">
+            <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="about-overlay">
+                <h1>About us</h1>
+                <p>Welcome to Community Kitchen , where we redefine the joy of dining with affordable, safe, and homely food experiences.
+                    At Community kitchen, we understand hat great food should not only tantalize your taste buds but also fit 
+                   seamlessly into your lifestyle. Our commitment to providing food at affordable rates ensures that you can
+                    savor your favorite flavors without compromising your budget.Your safety and comfort are our top priorities.
+                     Our chefs meticulously craft each dish, using only the freshest and finest ingredients. We take pride in offering
+                      more than just a meal we provide a taste of home, a feeling of warmth, and the assurance that every bite is prepared
+                       with care.Our vision extends beyond being a food delivery service; we aim to be your trusted culinary companion. Whether
+                        you're a busy professional, a family seeking convenience, or someone who simply loves good food, Community Kitchen is 
+                        here to make your dining experience both enjoyable and affordable.</p>
+            </div>
+        </div>
+    
+    
+            <!--  FOOTER   -->
+        
+            <%- include('components/footer') %>
+    
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script>
+        function openAbout() {
+       document.getElementById("about").style.width = "100%";
+   }
+
+   function closeNav() {
+       document.getElementById("about").style.width = "0%";
+   }
+   </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

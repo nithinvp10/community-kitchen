@@ -26,6 +26,9 @@
               placeholder="Enter your email"
               required
             />
+            <% if (!emailExist) { %>
+            <p class="text-danger">Wrong Email</p>
+            <% } %>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -38,10 +41,8 @@
               required
             />
             <% if (wrong) { %>
-              <p class="text-danger"><%= wrong %></p>
+            <p class="text-danger"><%= wrong %></p>
             <% } %>
-              
-           
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
