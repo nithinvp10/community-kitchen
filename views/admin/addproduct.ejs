@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Ordering</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/admin/addproduct.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <%- include('components/nav') %>
+
+    <section>
+      <div class="container md-4 add-container">
+        <div class="row">
+          <div class="col-md-11">
+            <h2 class="text-center MD-5">Add product</h2>
+            <form action="addproduct" method="post" enctype="multipart/form-data">
+              <label>NAME</label>
+              <input type="text" name="name" required class="form-control" />
+              <label>DISCRIPTION</label>
+              <textarea name="description" required class="form-control" id="" cols="30" rows="5"></textarea>
+              <label>PRICE</label>
+              <input type="number" name="price" required class="form-control" />
+              <label>IMAGE</label>
+              <input type="file" name="file" required class="form-control" />
+
+              <button class="btn btn-success mt-4">submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
