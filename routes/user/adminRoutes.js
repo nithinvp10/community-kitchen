@@ -4,11 +4,15 @@ const router = express.Router();
 const cookieAuth = require("../../utils/auth");
 const jwt = require("jsonwebtoken");
 
-const adminLogin = require("../../models/admin/login");
-
 const multer = require("multer");
 const cloudinaryConfig = require("../../config/cloudinary.config");
+
+//models
 const productModel = require("../../models/admin/product");
+const feedbackModel=require('../../models/admin/feedback');
+const userModel=require('../../models/user/login');
+const adminLogin = require("../../models/admin/login");
+const orderModel=require('../../models/user/order');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -147,7 +151,7 @@ router.post(
   "/dashboard/addproduct",
   upload.single("file"),
   async (req, res) => {
-    const { name, description, price } = req.body;
+    const { name, description, price,ingredients } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -163,6 +167,7 @@ router.post(
         name: name,
         description: description,
         price: price,
+        ingredients:ingredients,
         image: fileUpload.secure_url,
       })
       .then(() => {
@@ -173,6 +178,7 @@ router.post(
       });
   }
 );
+
 
 router.get("/dashboard/product/delete/:id", async (req, res) => {
   const { id } = req.params;
@@ -187,6 +193,79 @@ router.get("/dashboard/product/delete/:id", async (req, res) => {
     res.redirect("/admin/dashboard");
   }
 });
+
+
+router.get('/feedback',async(req,res)=>{
+  if (req.cookies.admin) {
+    const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
+    const findAdmin = await adminLogin.findByPk(tokenId);
+
+    if (findAdmin) {
+      const feedback=await feedbackModel.findAll({})
+      res.render("admin/feedback",{feedback:feedback});
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+})
+
+router.get('/users',async(req,res)=>{
+  if (req.cookies.admin) {
+    const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
+    const findAdmin = await adminLogin.findByPk(tokenId);
+
+    if (findAdmin) {
+      const users=await userModel.findAll({});
+      res.render("admin/users",{users:users});
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+})
+
+router.get('/orders',async(req,res)=>{
+  if (req.cookies.admin) {
+    const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
+    const findAdmin = await adminLogin.findByPk(tokenId);
+
+    if (findAdmin) {
+      const orders=await orderModel.findAll({});
+      res.render("admin/order",{orders:orders});
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+})
+
+router.get('/orders/:order',async(req,res)=>{
+  if (req.cookies.admin) {
+    const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
+    const findAdmin = await adminLogin.findByPk(tokenId);
+
+    if (findAdmin) {
+     
+      res.render("admin/updatestatus");
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+})
+
+
+
+
 
 router.get("/logout", (req, res) => {
   res.clearCookie("admin");

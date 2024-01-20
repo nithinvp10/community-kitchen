@@ -26,6 +26,17 @@ body {
     color: #fff !important;
 }
 
+.navwid{
+    max-width: 100%;
+}
+.tabwid{
+    max-width: 95%;
+}
+
+.table th, .table td {
+    word-wrap: break-word;
+    max-width: 300px; /* Set a max-width to prevent it from becoming too wide */
+}
 
 
 
@@ -43,27 +54,14 @@ body {
     bottom: 0;
     position:fixed;
 }
-.add-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
-  }
-  .navwid{
-    max-width: 100%;
-}
-.rowwid{
-    max-width: 60%;
-}
+ 
 
-  .btn{
-    background: blue;
-    color: white;
-  }
-  .btn:hover{
+
+
+.product-container{
+    margin-top: 80px;
+ }
+.btn-primary{
     background: orangered;
-    color: white;
-  }
+    border-color: red;
+}

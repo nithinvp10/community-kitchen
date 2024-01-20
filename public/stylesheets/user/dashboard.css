@@ -3,6 +3,25 @@ body {
 }
 
 /* navbar */
+.navwid{
+    max-width: 100%;
+}
+
+ 
+
+.form-inline input {
+    border-radius: 15px; /* Add border-radius for a rounded input */
+  }
+
+  .btn-search {
+    background-color: #3498db; /* Change the button background color */
+    color: #f05454; /* Change the button text color */
+    border-radius: 15px; /* Add border-radius for a rounded button */
+  }
+
+  .btn-search:hover {
+    background-color: #2980b9; /* Change the button background color on hover */
+  }
 
 .navbar {
     background-color:#f5efdd !important;
@@ -36,6 +55,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 80px;
+    margin-bottom: 60px;
+    max-width: 90%;
 }
 
 .product-row {
@@ -50,7 +71,7 @@ body {
 }
 
 .product-card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.356);
 }
 
 .product-image {

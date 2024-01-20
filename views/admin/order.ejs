@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/allorders.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+   <%- include('components/nav') %>
+     <!--   ORDERS  -->
+
+     <section>
+        <div class="container product-container tabwid">
+          <div cass="row mt-3">
+            <% if (orders) { %>
+             <h3 class="text-center">No Orders</h3>
+            <% }else{ %>
+          <table class="table mt-3">
+          <thead>
+          <tr>
+            <th scope="col">DATE & TIME </th>
+            <th scope="col">USER NAME</th>
+            <th scope="col">ORDER</th>
+            <th scope="col">QUANTITY</th>
+            <th scope="col">TOTAL PRICE</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">PIN CODE</th>
+            <th scope="col">PHONE NO</th>
+            <th scope="col">ORDER STATUS</th>
+            <th scope="col">UPDATE STATUS</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% for( let i = 0; i < orders.length; i++ ) { %>
+          <tr>
+            <td><%= orders[i].dataValues.datetime %></td>
+            <td><%= orders[i].dataValues.name %></td>
+            <td><%= orders[i].dataValues.order %></td>
+            <td><%= orders[i].dataValues.quantity %></td>
+            <td><%= orders[i].dataValues.total %></td>
+            <td><%= orders[i].dataValues.address %></td>
+            <td><%= orders[i].dataValues.pincode %></td>
+            <td><%= orders[i].dataValues.phone %></td>
+            <td>confirmed</td>
+            <td><a href="updatestatus.html" class="btn btn-primary">UPDATE STATUS</a></td></td>
+          </tr>
+          <% } %>
+          <!-- <tr>
+            <td>12/5/2024  8:18</td>
+            <td>arun</td>
+            <td>chicken-biryani</td>
+            <td>2</td>
+            <td>150</td>
+            <td> thrisur </td>
+            <td>564256</td>
+            <td>4367656546546</td>
+            <td>confirmed</td>
+            <td><a href="/admin/orders/1" class="btn btn-primary">UPDATE STATUS</a></td></td>
+          </tr> -->
+        </tbody>
+       </table>
+       <% } %>
+       </div>
+       </section>
+      
+
+
+
+
+        <!--  FOOTER   -->
+    
+      <%- include('../user/components/footer') %>
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -4,6 +4,10 @@ const loginModel = require("../../models/user/login");
 const cookieAuth = require("../../utils/auth");
 const jwt = require("jsonwebtoken");
 
+//models
+const feedbackModel = require("../../models/admin/feedback");
+const productModel=require('../../models/admin/product');
+
 router.get("/login", async (req, res) => {
   if (req.cookies.user) {
     const id = jwt.verify(req.cookies.user, "sdfkjendfk");
@@ -107,8 +111,9 @@ router.get("/:id/dashboard", async (req, res) => {
   const { id } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
+    const products= await productModel.findAll({});
     if (findId) {
-      res.render("user/dashboard", { id: id });
+      res.render("user/dashboard", { id: id,products:products });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -137,8 +142,10 @@ router.get("/:id/dashboard/product/:product", async (req, res) => {
   const { id,product } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
+    const findproduct=await productModel.findByPk(product);
+
     if (findId) {
-      res.render("user/product", { id: id,product:product });
+      res.render("user/product", { id: id,product:findproduct.dataValues });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -176,6 +183,48 @@ router.get("/:id/dashboard/contact", async (req, res) => {
     res.redirect("/user/login");
   }
 });
+
+router.get("/:id/dashboard/feedback", async (req, res) => {
+  const { id } = req.params;
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    if (findId) {
+      res.render("user/feedback", { id: id,post:false });
+    } else {
+      res.clearCookie("user");
+      res.redirect("/user/login");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
+router.post("/:id/dashboard/feedback", async (req, res) => {
+
+  const {id}=req.params;
+  const {message}=req.body;
+
+  console.log(req.body);
+
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    if (findId) {
+      const sendFeedback=await feedbackModel.create({
+        message:message,
+        name:findId.dataValues.name,
+        email:findId.dataValues.email
+      })
+      res.render("user/feedback", { id: id,post:true });
+      
+    } else {
+      res.clearCookie("user");
+      res.redirect("/user/login");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+
+})
 
 router.get("/:id/dashboard/profile", async (req, res) => {
   const { id } = req.params;

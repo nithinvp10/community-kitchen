@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 70%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #007bff;
+      text-align: center;
+    }
+
+    .order-details {
+      margin-top: 30px;
+    }
+
+    .order-status {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Order Details</h2>
+
+
+    <div class="order-details">
+
+      <div class="form-group">
+        <b>User Name:</b>arjun
+      </div>
+      <div class="form-group">
+        <b>Address:</b>thrissur
+      </div>
+
+      <div class="form-group">
+        <b>Product:</b>chichen 
+      </div>
+
+      <div class="form-group">
+        <b>Quantity:</b> 2
+      </div>
+
+      <div class="form-group">
+      <b>Total:</b>150
+      </div>
+      <div class="form-group">
+        <b>Status:</b>processing
+        </div>
+      
+      <form>
+      <div class="form-group order-status">
+        <label for="status">Order Status:</label>
+        <select id="status" class="form-control">
+          <option value="Processing">Processing</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" type="button">Update Status</button>
+    </div>
+  </form>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

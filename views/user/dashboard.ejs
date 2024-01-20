@@ -1,130 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/user/dashboard.css">
-    
-</head>
-<body>
-
-<!-- Navigation Bar -->
-<%- include('components/nav') %>
-    <div class="container product-container" >
-        <div class="row product-row">
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/user/dashboard.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <%- include('components/nav') %>
+    <div class="container product-container">
+      <div class="row product-row">
+        <% if (products.length==0) { %>
+        <h3>No Products</h3>
+        <% }else{ %>
+          <% for( let i = 0; i < products.length; i++ ) { %>
+          
+          
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="<%= products[i].dataValues.image %>" class="product-image" />
+            <div class="product-info">
+              <h4><%= products[i].dataValues.name %></h4>
+              <p><%= products[i].dataValues.description.slice(0,90) %>...</p>
+              <p><strong>Price:</strong> <%= products[i].dataValues.price %></p>
+              <a
+                class="btn btn-primary btn-block"
+                href="/user/<%= id %>/dashboard/product/<%= products[i].dataValues.id %>"
+                >Order</a>
             </div>
-            <div class="col col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="/images/img.jpg" class="product-image">
-                    <div class="product-info">
-                        <h4>ChickenBiryani</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>Price:</strong> 150</p>
-                        <a class="btn btn-primary btn-block" href="/user/<%= id %>/dashboard/product/1">Order</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more product cards here -->
-
+          </div>
         </div>
+        <% } %>
+       <% } %>
+
+        <!-- Add more product cards here -->
+      </div>
     </div>
-     <!--    ABOUT   -->
+    <!--    ABOUT   -->
 
-     <div id="about" class="about">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="about-overlay">
-            <h1>About us</h1>
-            <p>Welcome to Community Kitchen , where we redefine the joy of dining with affordable, safe, and homely food experiences.
-                At Community kitchen, we understand hat great food should not only tantalize your taste buds but also fit 
-               seamlessly into your lifestyle. Our commitment to providing food at affordable rates ensures that you can
-                savor your favorite flavors without compromising your budget.Your safety and comfort are our top priorities.
-                 Our chefs meticulously craft each dish, using only the freshest and finest ingredients. We take pride in offering
-                  more than just a meal we provide a taste of home, a feeling of warmth, and the assurance that every bite is prepared
-                   with care.Our vision extends beyond being a food delivery service; we aim to be your trusted culinary companion. Whether
-                    you're a busy professional, a family seeking convenience, or someone who simply loves good food, Community Kitchen is 
-                    here to make your dining experience both enjoyable and affordable.</p>
-        </div>
+    <div id="about" class="about">
+      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="about-overlay">
+        <h1>About us</h1>
+        <p>
+          Welcome to Community Kitchen , where we redefine the joy of dining
+          with affordable, safe, and homely food experiences. At Community
+          kitchen, we understand hat great food should not only tantalize your
+          taste buds but also fit seamlessly into your lifestyle. Our commitment
+          to providing food at affordable rates ensures that you can savor your
+          favorite flavors without compromising your budget.Your safety and
+          comfort are our top priorities. Our chefs meticulously craft each
+          dish, using only the freshest and finest ingredients. We take pride in
+          offering more than just a meal we provide a taste of home, a feeling
+          of warmth, and the assurance that every bite is prepared with care.Our
+          vision extends beyond being a food delivery service; we aim to be your
+          trusted culinary companion. Whether you're a busy professional, a
+          family seeking convenience, or someone who simply loves good food,
+          Community Kitchen is here to make your dining experience both
+          enjoyable and affordable.
+        </p>
+      </div>
     </div>
 
+    <!--  FOOTER   -->
 
-        <!--  FOOTER   -->
-    
-        <%- include('components/footer') %>
-    
+    <%- include('components/footer') %>
 
     <!-- Rest of the content goes here -->
 
     <!-- Bootstrap JS and Popper.js (optional) -->
     <script>
-        function openAbout() {
-       document.getElementById("about").style.width = "100%";
-   }
+      function openAbout() {
+        document.getElementById("about").style.width = "100%";
+      }
 
-   function closeNav() {
-       document.getElementById("about").style.width = "0%";
-   }
-   </script>
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      function closeNav() {
+        document.getElementById("about").style.width = "0%";
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
+  </body>
 </html>

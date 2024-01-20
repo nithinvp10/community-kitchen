@@ -17,30 +17,23 @@
     <div class="container product-container">
         <div class="row">
             <div class="col-md-6">
-                <img src="/images/img.jpg" alt="Food Image">
+                <img src="<%= product.image %>" alt="Food Image">
             </div>
             <div class="col-md-6 product-info">
-                <h2>Chicken-Biryani</h2>
-                <p>Chicken Biryani, a culinary masterpiece that harmonizes aromatic spices, succulent chicken, 
-                      and fragrant basmati rice. Slow-cooked to 
-                      perfection, each bite unfolds layers of warmth from cumin, cardamom, and a hint of cinnamon.
-                     Tender marinated chicken, fluffy saffron-infused rice, and
-                     caramelized onions on top create a taste sensation that's both authentic and unforgettable.
-                     Treat yourself to the essence of Indian cuisine</p>
-                <p><strong>Ingredients:</strong>Chicken , Basmati Rice ,Yogurt, Onions ,Tomatoes, 
-                    Spices (cumin, cardamom, cinnamon, cloves, bay leaves), Ghee or Cooking Oil, Ginger,Garlic
-                    Green Chilies, Fresh Coriander, Mint,Saffron , Lime or Lemon Juice</p>
-                <p><strong>Price:</strong> 150</p>
+                <h2><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <p><strong>Ingredients:</strong><%= product.ingredients %></p>
+                <p><strong>Price:</strong> <%= product.price %></p>
                 
                 <!-- Quantity Input -->
                 <form action="pay.html">
                 <div class="form-group">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" class="form-control" id="quantity" value="1" min="1">
+                    <input type="number" class="form-control" name="quantity" id="quantity" value="1" min="1">
                 </div>
 
                 <!-- Order Button -->
-                <a href="/user/<%= id %>/dashboard/product/<%= product %>/pay" class="btn btn-primary btn-block">Order Now</a>
+                <a href="/user/<%= id %>/dashboard/product/<%= product.id %>/pay" class="btn btn-primary btn-block">Order Now</a>
                 </form>
             </div>
         </div>

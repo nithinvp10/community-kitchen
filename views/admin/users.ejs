@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/allusers.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+   <%- include('components/nav') %>
+     <!--   users  -->
+     <section>
+        <div class="container product-container tabwid">
+          <div cass="row mt-3">
+            <% if (users.length==0) { %>
+             <h3 class="text-center">No Users</h3>
+            <% }else{ %>
+          <table class="table mt-3">
+          <thead>
+          <tr>
+            <th scope="col">NAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PHONE NUMBER</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">PIN CODE</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% for( let i = 0; i < users.length; i++ ) { %>
+          <tr>
+            <td><%= users[i].dataValues.name %></td>
+            <td><%= users[i].dataValues.email %></td>
+            <td><%= users[i].dataValues.phone %></td>
+            <td><%= users[i].dataValues.address %></td>
+            <td><%= users[i].dataValues.pincode %><td>
+          </tr>
+          <% } %>
+        </tbody>
+       </table>
+       <% } %>
+       </div>
+       </section>
+      
+    
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
