@@ -44,6 +44,10 @@ const orderModel = sequelizeConfig.define("order", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  customerid:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
 });
 
 

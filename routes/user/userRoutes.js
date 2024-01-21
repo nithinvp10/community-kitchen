@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 
 //models
 const feedbackModel = require("../../models/admin/feedback");
-const productModel=require('../../models/admin/product');
+const productModel = require("../../models/admin/product");
+const orderModel = require("../../models/user/order");
 
 router.get("/login", async (req, res) => {
   if (req.cookies.user) {
@@ -111,9 +112,9 @@ router.get("/:id/dashboard", async (req, res) => {
   const { id } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
-    const products= await productModel.findAll({});
+    const products = await productModel.findAll({});
     if (findId) {
-      res.render("user/dashboard", { id: id,products:products });
+      res.render("user/dashboard", { id: id, products: products });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -128,7 +129,12 @@ router.get("/:id/dashboard/orders", async (req, res) => {
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
     if (findId) {
-      res.render("user/orders", { id: id });
+      const orders = await orderModel.findAll({
+        where: {
+          customerid: findId.dataValues.id,
+        },
+      });
+      res.render("user/orders", { id: id, orders: orders });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -139,13 +145,13 @@ router.get("/:id/dashboard/orders", async (req, res) => {
 });
 
 router.get("/:id/dashboard/product/:product", async (req, res) => {
-  const { id,product } = req.params;
+  const { id, product } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
-    const findproduct=await productModel.findByPk(product);
+    const findproduct = await productModel.findByPk(product);
 
     if (findId) {
-      res.render("user/product", { id: id,product:findproduct.dataValues });
+      res.render("user/product", { id: id, product: findproduct?.dataValues });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -154,12 +160,57 @@ router.get("/:id/dashboard/product/:product", async (req, res) => {
     res.redirect("/user/login");
   }
 });
+
+router.post("/:id/dashboard/product/:product", async (req, res) => {
+  const { id, product } = req.params;
+  const { quantity } = req.body;
+
+  if (req.cookies.user) {
+    const findId = await loginModel.findByPk(id);
+    const findproduct = await productModel.findByPk(product);
+    console.log(findproduct.dataValues);
+    console.log(findId.dataValues);
+
+    if (findId) {
+      if (findproduct) {
+        const total = findproduct?.dataValues.price * quantity;
+        const order = orderModel
+          .create({
+            name: findId.dataValues.name,
+            datetime: new Date(),
+            order: findproduct?.dataValues.name,
+            quantity: quantity,
+            total: total,
+            address: findId.dataValues.address,
+            pincode: findId.dataValues.pincode,
+            phone: findId.dataValues.phone,
+            status: "Processing",
+            customerid: findId.dataValues.id,
+          })
+          .then((order) => {
+            res.render(`user/pay`, {id:product, order: order.dataValues });
+          })
+          .catch((err) => {
+            res.json({ err: err.message });
+          });
+      } else {
+        res.json({ err: "Error Detected" });
+      }
+    } else {
+      res.clearCookie("user");
+      res.redirect("/user/login");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
 router.get("/:id/dashboard/product/:product/pay", async (req, res) => {
   const { id,product } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
     if (findId) {
-      res.render("user/pay", { id: id });
+      res.redirect(`/user/${id}/dashboard/orders`)
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -189,7 +240,7 @@ router.get("/:id/dashboard/feedback", async (req, res) => {
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
     if (findId) {
-      res.render("user/feedback", { id: id,post:false });
+      res.render("user/feedback", { id: id, post: false });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -200,22 +251,20 @@ router.get("/:id/dashboard/feedback", async (req, res) => {
 });
 
 router.post("/:id/dashboard/feedback", async (req, res) => {
-
-  const {id}=req.params;
-  const {message}=req.body;
+  const { id } = req.params;
+  const { message } = req.body;
 
   console.log(req.body);
 
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
     if (findId) {
-      const sendFeedback=await feedbackModel.create({
-        message:message,
-        name:findId.dataValues.name,
-        email:findId.dataValues.email
-      })
-      res.render("user/feedback", { id: id,post:true });
-      
+      const sendFeedback = await feedbackModel.create({
+        message: message,
+        name: findId.dataValues.name,
+        email: findId.dataValues.email,
+      });
+      res.render("user/feedback", { id: id, post: true });
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -223,8 +272,7 @@ router.post("/:id/dashboard/feedback", async (req, res) => {
   } else {
     res.redirect("/user/login");
   }
-
-})
+});
 
 router.get("/:id/dashboard/profile", async (req, res) => {
   const { id } = req.params;

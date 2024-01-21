@@ -18,7 +18,7 @@
      <section>
         <div class="container product-container tabwid">
           <div cass="row mt-3">
-            <% if (orders) { %>
+            <% if (orders.length==0) { %>
              <h3 class="text-center">No Orders</h3>
             <% }else{ %>
           <table class="table mt-3">
@@ -47,8 +47,8 @@
             <td><%= orders[i].dataValues.address %></td>
             <td><%= orders[i].dataValues.pincode %></td>
             <td><%= orders[i].dataValues.phone %></td>
-            <td>confirmed</td>
-            <td><a href="updatestatus.html" class="btn btn-primary">UPDATE STATUS</a></td></td>
+            <td><%= orders[i].dataValues.status %></td>
+            <td><a href="orders/<%= orders[i].dataValues.id %>" class="btn btn-primary">UPDATE STATUS</a></td></td>
           </tr>
           <% } %>
           <!-- <tr>

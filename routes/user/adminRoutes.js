@@ -247,13 +247,19 @@ router.get('/orders',async(req,res)=>{
 })
 
 router.get('/orders/:order',async(req,res)=>{
+  const {order}=req.params
   if (req.cookies.admin) {
     const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
     const findAdmin = await adminLogin.findByPk(tokenId);
+    const findOrder=await orderModel.findOne({
+      where:{
+        id:order
+      }
+    });
 
     if (findAdmin) {
      
-      res.render("admin/updatestatus");
+      res.render("admin/updatestatus",{order:findOrder.dataValues});
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");

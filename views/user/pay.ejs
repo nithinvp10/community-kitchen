@@ -25,9 +25,9 @@
 <div class="container">
     <div class="payment-form">
         <h2 class="text-center mb-4">Payment Details</h2>
-        <p>Items Orderd : </p>
-        <p>Total Amount :</p>
-                <form action="orders.html">
+        <p>Items Orderd : <%= order.order %></p>
+        <p>Total Amount : <%= order.total %></p>
+                <form action="<%= id %>/pay" method="get">
             <div class="form-group">
                 <label for="paymentMethod">Payment Method</label>
                 <select class="form-control" id="paymentMethod" required>

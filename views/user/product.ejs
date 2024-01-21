@@ -26,14 +26,14 @@
                 <p><strong>Price:</strong> <%= product.price %></p>
                 
                 <!-- Quantity Input -->
-                <form action="pay.html">
+                <form action="/user/<%= id %>/dashboard/product/<%= product.id %>" method="post" >
                 <div class="form-group">
                     <label for="quantity">Quantity:</label>
                     <input type="number" class="form-control" name="quantity" id="quantity" value="1" min="1">
                 </div>
 
                 <!-- Order Button -->
-                <a href="/user/<%= id %>/dashboard/product/<%= product.id %>/pay" class="btn btn-primary btn-block">Order Now</a>
+                <button class="btn btn-primary btn-block">Order Now</button>
                 </form>
             </div>
         </div>

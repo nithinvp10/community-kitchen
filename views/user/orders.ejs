@@ -19,29 +19,25 @@
   <div class="container orders-container">
     <h2 class="text-center">My Orders</h2>
 
+    <% if (orders.length==0) { %>
+     <h3 class="text-center">No Orders</h3>
+    <% }else{ %>
+
     <!-- Order Item 1 -->
+    <% for( let i = 0; i < orders.length; i++ ) { %>
+    
+   
     <div class="order-item">
-      <h4><p>Items: Pizza</p>
-        <p>Price:150</p>
-        <p>Quantity:2</p>
-      <p>Total: 300</p>
-      <p>Status: Delivered</p></h4>
-      
-
+      <h4><p>Items: <%= orders[i].dataValues.order %></p>
+        <p>Price: <%= orders[i].dataValues.price %></p>
+        <p>Quantity: <%= orders[i].dataValues.quantity %></p>
+      <p>Total: <%= orders[i].dataValues.total %></p>
+      <p>Status: <%= orders[i].dataValues.status %></p></h4>
     </div>
+    <% } %>
+    <% } %>
 
-    <!-- Order Item 2 -->
-    <div class="order-item">
-
-      <h4><p>Items: Burger, Fries, Soda</p>
-        <p>Price:150</p>
-        <p>Quantity:2</p>
-      <p>Total: 300</p>
-      <p>Status: In Progress</p></h4>
-      <a class="btn btn-primary">cancel</a>
-    </div>
-
-    <!-- Add more order items as needed -->
+   
 
   </div>
 
@@ -66,9 +62,7 @@
 
     <!--  FOOTER   -->
 
-    <footer>
-        <p> 2024 Communty kitchen. All rights reserved.</p>
-      </footer>
+    <%- include('components/footer') %>
 
 <!-- Bootstrap JS and Popper.js (optional) -->
 <script>
