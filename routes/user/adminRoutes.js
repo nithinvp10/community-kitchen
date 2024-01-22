@@ -9,10 +9,10 @@ const cloudinaryConfig = require("../../config/cloudinary.config");
 
 //models
 const productModel = require("../../models/admin/product");
-const feedbackModel=require('../../models/admin/feedback');
-const userModel=require('../../models/user/login');
+const feedbackModel = require("../../models/admin/feedback");
+const userModel = require("../../models/user/login");
 const adminLogin = require("../../models/admin/login");
-const orderModel=require('../../models/user/order');
+const orderModel = require("../../models/user/order");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -151,7 +151,7 @@ router.post(
   "/dashboard/addproduct",
   upload.single("file"),
   async (req, res) => {
-    const { name, description, price,ingredients } = req.body;
+    const { name, description, price, ingredients } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -167,7 +167,7 @@ router.post(
         name: name,
         description: description,
         price: price,
-        ingredients:ingredients,
+        ingredients: ingredients,
         image: fileUpload.secure_url,
       })
       .then(() => {
@@ -178,7 +178,6 @@ router.post(
       });
   }
 );
-
 
 router.get("/dashboard/product/delete/:id", async (req, res) => {
   const { id } = req.params;
@@ -194,15 +193,14 @@ router.get("/dashboard/product/delete/:id", async (req, res) => {
   }
 });
 
-
-router.get('/feedback',async(req,res)=>{
+router.get("/feedback", async (req, res) => {
   if (req.cookies.admin) {
     const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
     const findAdmin = await adminLogin.findByPk(tokenId);
 
     if (findAdmin) {
-      const feedback=await feedbackModel.findAll({})
-      res.render("admin/feedback",{feedback:feedback});
+      const feedback = await feedbackModel.findAll({});
+      res.render("admin/feedback", { feedback: feedback });
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
@@ -210,16 +208,16 @@ router.get('/feedback',async(req,res)=>{
   } else {
     res.redirect("/admin/login");
   }
-})
+});
 
-router.get('/users',async(req,res)=>{
+router.get("/users", async (req, res) => {
   if (req.cookies.admin) {
     const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
     const findAdmin = await adminLogin.findByPk(tokenId);
 
     if (findAdmin) {
-      const users=await userModel.findAll({});
-      res.render("admin/users",{users:users});
+      const users = await userModel.findAll({});
+      res.render("admin/users", { users: users });
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
@@ -227,16 +225,16 @@ router.get('/users',async(req,res)=>{
   } else {
     res.redirect("/admin/login");
   }
-})
+});
 
-router.get('/orders',async(req,res)=>{
+router.get("/orders", async (req, res) => {
   if (req.cookies.admin) {
     const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
     const findAdmin = await adminLogin.findByPk(tokenId);
 
     if (findAdmin) {
-      const orders=await orderModel.findAll({});
-      res.render("admin/order",{orders:orders});
+      const orders = await orderModel.findAll({});
+      res.render("admin/order", { orders: orders });
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
@@ -244,22 +242,21 @@ router.get('/orders',async(req,res)=>{
   } else {
     res.redirect("/admin/login");
   }
-})
+});
 
-router.get('/orders/:order',async(req,res)=>{
-  const {order}=req.params
+router.get("/orders/:order", async (req, res) => {
+  const { order } = req.params;
   if (req.cookies.admin) {
     const tokenId = jwt.verify(req.cookies.admin, "sdfkjendfk");
     const findAdmin = await adminLogin.findByPk(tokenId);
-    const findOrder=await orderModel.findOne({
-      where:{
-        id:order
-      }
+    const findOrder = await orderModel.findOne({
+      where: {
+        id: order,
+      },
     });
 
     if (findAdmin) {
-     
-      res.render("admin/updatestatus",{order:findOrder.dataValues});
+      res.render("admin/updatestatus", { order: findOrder.dataValues });
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
@@ -267,11 +264,31 @@ router.get('/orders/:order',async(req,res)=>{
   } else {
     res.redirect("/admin/login");
   }
-})
+});
+
+router.post("/orders/:order", async (req, res) => {
+  const { order } = req.params;
+  const { status } = req.body;
 
 
-
-
+  const updateOrderStatus = await orderModel
+    .update(
+      {
+        status: status,
+      },
+      {
+        where: {
+          id: order,
+        },
+      }
+    )
+    .then(() => {
+      res.redirect(`/admin/orders`);
+    })
+    .catch((err) => {
+      res.json({ err: err.message });
+    });
+});
 
 router.get("/logout", (req, res) => {
   res.clearCookie("admin");

@@ -3,6 +3,7 @@ const router = express.Router();
 const loginModel = require("../../models/user/login");
 const cookieAuth = require("../../utils/auth");
 const jwt = require("jsonwebtoken");
+const { Op } = require("sequelize");
 
 //models
 const feedbackModel = require("../../models/admin/feedback");
@@ -110,11 +111,27 @@ router.post("/signup", async (req, res) => {
 
 router.get("/:id/dashboard", async (req, res) => {
   const { id } = req.params;
+  const { query } = req.query;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
-    const products = await productModel.findAll({});
+
     if (findId) {
-      res.render("user/dashboard", { id: id, products: products });
+      if (query) {
+        const products = await productModel
+          .findAll({
+            where: {
+              name: {
+                [Op.iLike]: `%${query}%`,
+              },
+            },
+          })
+          .then((data) => {
+            res.render("user/dashboard", { id: id, products: data });
+          });
+      } else {
+        const products = await productModel.findAll({});
+        res.render("user/dashboard", { id: id, products: products });
+      }
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
@@ -188,7 +205,7 @@ router.post("/:id/dashboard/product/:product", async (req, res) => {
             customerid: findId.dataValues.id,
           })
           .then((order) => {
-            res.render(`user/pay`, {id:product, order: order.dataValues });
+            res.render(`user/pay`, { id: product, order: order.dataValues });
           })
           .catch((err) => {
             res.json({ err: err.message });
@@ -206,11 +223,11 @@ router.post("/:id/dashboard/product/:product", async (req, res) => {
 });
 
 router.get("/:id/dashboard/product/:product/pay", async (req, res) => {
-  const { id,product } = req.params;
+  const { id, product } = req.params;
   if (req.cookies.user) {
     const findId = await loginModel.findByPk(id);
     if (findId) {
-      res.redirect(`/user/${id}/dashboard/orders`)
+      res.redirect(`/user/${id}/dashboard/orders`);
     } else {
       res.clearCookie("user");
       res.redirect("/user/login");
